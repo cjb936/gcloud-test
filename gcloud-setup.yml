@@ -1,0 +1,21 @@
+name: Install Google Cloud SDK
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  setup-gcloud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Google Cloud SDK
+        uses: google-github-actions/setup-gcloud@v2
+        with:
+          version: 'latest'
+
+      - name: Verify gcloud installation
+        run: gcloud --version
